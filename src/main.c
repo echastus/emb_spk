@@ -25,6 +25,7 @@
 
 #include "esp_bt.h"
 #include "bt_app_core.h"
+#include "amp_driver.h"
 #include "bt_app_av.h"
 #include "esp_bt_main.h"
 #include "esp_bt_device.h"
@@ -154,8 +155,14 @@ void app_main(void)
     }
     ESP_ERROR_CHECK(err);
 
+    /* initialize I2C */
+    i2c_master_init();
+
+    /* initalize SSM3582A amplifier */
+    ssm3582a_init();
+
     /*
-     * This example only uses the functions of Classical Bluetooth.
+     * This project only uses the functions of Classical Bluetooth.
      * So release the controller memory for Bluetooth Low Energy.
      */
     ESP_ERROR_CHECK(esp_bt_controller_mem_release(ESP_BT_MODE_BLE));
