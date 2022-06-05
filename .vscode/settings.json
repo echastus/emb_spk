@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "bt_app_av.h": "c",
+        "i2c.h": "c"
+    }
+}
